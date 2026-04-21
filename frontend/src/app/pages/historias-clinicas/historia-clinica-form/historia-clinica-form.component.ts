@@ -54,7 +54,10 @@ export class HistoriaClinicaFormComponent implements OnInit {
   }
 
   guardar() {
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+  this.form.markAllAsTouched();
+  return;
+}
 
     const data = this.form.value;
 

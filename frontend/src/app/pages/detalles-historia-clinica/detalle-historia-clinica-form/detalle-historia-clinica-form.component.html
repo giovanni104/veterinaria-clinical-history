@@ -8,41 +8,73 @@
           <div class="col-md-4 mb-3">
             <label class="form-label">Temperatura</label>
             <input type="number" step="0.01" class="form-control" formControlName="temperatura">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('temperatura')?.touched && form.get('temperatura')?.invalid">
+              La temperatura es obligatoria y debe ser mayor que 0
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Peso</label>
             <input type="number" step="0.01" class="form-control" formControlName="peso">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('peso')?.touched && form.get('peso')?.invalid">
+              El peso es obligatorio y debe ser mayor que 0
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Frecuencia cardíaca</label>
             <input type="number" step="0.01" class="form-control" formControlName="frecuenciaCardiaca">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('frecuenciaCardiaca')?.touched && form.get('frecuenciaCardiaca')?.invalid">
+              La frecuencia cardíaca es obligatoria y debe ser mayor que 0
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Frecuencia respiratoria</label>
             <input type="number" step="0.01" class="form-control" formControlName="frecuenciaRespiratoria">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('frecuenciaRespiratoria')?.touched && form.get('frecuenciaRespiratoria')?.invalid">
+              La frecuencia respiratoria es obligatoria y debe ser mayor que 0
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Fecha y hora</label>
             <input type="datetime-local" class="form-control" formControlName="fechaHora">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('fechaHora')?.touched && form.get('fechaHora')?.invalid">
+              La fecha y hora son obligatorias
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Alimentación</label>
             <input type="text" class="form-control" formControlName="alimentacion">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('alimentacion')?.touched && form.get('alimentacion')?.invalid">
+              La alimentación es obligatoria
+            </div>
           </div>
 
           <div class="col-md-4 mb-3">
             <label class="form-label">Hidratación</label>
             <input type="text" class="form-control" formControlName="hidratacion">
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('hidratacion')?.touched && form.get('hidratacion')?.invalid">
+              La hidratación es obligatoria
+            </div>
           </div>
 
           <div class="col-md-8 mb-3">
             <label class="form-label">Observación</label>
             <textarea class="form-control" rows="3" formControlName="observacion"></textarea>
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('observacion')?.touched && form.get('observacion')?.invalid">
+              La observación es obligatoria
+            </div>
           </div>
 
           <div class="col-md-6 mb-3">
@@ -53,6 +85,10 @@
                 Historia #{{ historia.id }} - {{ historia.mascota?.nombre }}
               </option>
             </select>
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('historiaClinicaId')?.touched && form.get('historiaClinicaId')?.invalid">
+              Debe seleccionar una historia clínica
+            </div>
           </div>
 
           <div class="col-md-6 mb-3">
@@ -63,11 +99,11 @@
                 {{ colaborador.nombre }} {{ colaborador.apellido }}
               </option>
             </select>
+            <div class="text-danger mt-1"
+                 *ngIf="form.get('colaboradorId')?.touched && form.get('colaboradorId')?.invalid">
+              Debe seleccionar un colaborador
+            </div>
           </div>
-        </div>
-
-        <div class="text-danger mb-3" *ngIf="form.invalid && form.touched">
-          Verifica los campos obligatorios antes de guardar.
         </div>
 
         <button type="submit" class="btn btn-success me-2">
