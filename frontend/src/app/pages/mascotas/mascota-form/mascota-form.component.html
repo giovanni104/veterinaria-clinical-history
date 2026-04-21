@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4">{{ editMode ? 'Editar mascota' : 'Nueva mascota' }}</h2>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div class="text-danger mt-1" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
+              El nombre es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Raza</label>
+            <input type="text" class="form-control" formControlName="raza">
+            <div class="text-danger mt-1" *ngIf="form.get('raza')?.touched && form.get('raza')?.invalid">
+              La raza es obligatoria
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Vacuna</label>
+            <input type="text" class="form-control" formControlName="vacuna">
+            <div class="text-danger mt-1" *ngIf="form.get('vacuna')?.touched && form.get('vacuna')?.invalid">
+              La vacuna es obligatoria
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Sexo</label>
+            <input type="text" class="form-control" formControlName="sexo">
+            <div class="text-danger mt-1" *ngIf="form.get('sexo')?.touched && form.get('sexo')?.invalid">
+              El sexo es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Usuario dueño</label>
+            <select class="form-select" formControlName="usuarioId">
+              <option value="">Seleccione un usuario</option>
+              <option *ngFor="let usuario of usuarios" [value]="usuario.id">
+                {{ usuario.nombre }} {{ usuario.apellido }}
+              </option>
+            </select>
+            <div class="text-danger mt-1" *ngIf="form.get('usuarioId')?.touched && form.get('usuarioId')?.invalid">
+              Debe seleccionar un usuario
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success me-2">
+          Guardar
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="volver()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

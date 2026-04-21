@@ -1,35 +1,33 @@
-# Historial Clínico Veterinario
+# 🐾 Historial Clínico Veterinario
 
-Aplicación web para la gestión del historial clínico de una veterinaria.
+Aplicación web para la gestión del historial clínico de una veterinaria, desarrollada como prueba técnica.
 
-## Tecnologías
-- Backend: Spring Boot, Java 17, PostgreSQL
-- Frontend: Angular 11
-- Documentación: Swagger / OpenAPI
-- Pruebas: JUnit 5 y Mockito
+---
 
-## Estructura del proyecto
-- backend/: API REST en Spring Boot
-- frontend/: Aplicación web en Angular 11
-- database/: Scripts SQL
-- docs/: Evidencias y documentación
+## 📌 Descripción
 
-## Requisitos
-- Java 17
-- Maven 3.9+
-- Node.js
-- Angular CLI 11
-- PostgreSQL
+El sistema permite administrar la información clínica mediante módulos CRUD para:
 
-## Ejecución del backend
-...
+- Usuarios
+- Mascotas
+- Colaboradores
+- Historias Clínicas
+- Detalles de Historia Clínica
 
-## Ejecución del frontend
-...
+Incluye relaciones entre entidades y validaciones para garantizar la integridad de la información.
 
-## Endpoints y documentación
-Swagger disponible en:
-http://localhost:8080/swagger-ui/index.html
+---
 
-## Pruebas unitarias
-mvn test
+## 🏗️ Arquitectura
+
+Solución desacoplada:
+
+- **Backend (Spring Boot)**: API REST con arquitectura por capas  
+  (Controller → Service → Repository)
+- **Frontend (Angular 11)**: SPA que consume la API
+
+```text
+backend/    → API REST
+frontend/   → Aplicación Angular
+database/   → Scripts SQL
+docs/       → Evidencias (capturas)

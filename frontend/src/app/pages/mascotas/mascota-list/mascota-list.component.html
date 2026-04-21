@@ -1,0 +1,52 @@
+<div class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Mascotas</h2>
+    <button class="btn btn-primary shadow-sm" (click)="nuevo()">
+      + Nueva mascota
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <table class="table table-hover table-bordered align-middle shadow-sm" *ngIf="!loading">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Raza</th>
+        <th>Vacuna</th>
+        <th>Sexo</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mascota of mascotas">
+        <td>{{ mascota.id }}</td>
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.raza }}</td>
+        <td>{{ mascota.vacuna }}</td>
+        <td>{{ mascota.sexo }}</td>
+        <td>{{ mascota.usuario?.nombre }} {{ mascota.usuario?.apellido }}</td>
+        <td>
+          <button class="btn btn-outline-warning btn-sm me-2" (click)="editar(mascota.id)">
+            Editar
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminar(mascota.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+
+      <tr *ngIf="mascotas.length === 0">
+        <td colspan="7" class="text-center text-muted">
+          No hay mascotas registradas
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

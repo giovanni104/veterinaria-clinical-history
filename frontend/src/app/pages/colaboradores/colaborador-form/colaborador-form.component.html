@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4">{{ editMode ? 'Editar colaborador' : 'Nuevo colaborador' }}</h2>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div class="text-danger mt-1" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
+              El nombre es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" formControlName="apellido">
+            <div class="text-danger mt-1" *ngIf="form.get('apellido')?.touched && form.get('apellido')?.invalid">
+              El apellido es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Cargo</label>
+            <input type="text" class="form-control" formControlName="cargo">
+            <div class="text-danger mt-1" *ngIf="form.get('cargo')?.touched && form.get('cargo')?.invalid">
+              El cargo es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Especialidad</label>
+            <input type="text" class="form-control" formControlName="especialidad">
+            <div class="text-danger mt-1" *ngIf="form.get('especialidad')?.touched && form.get('especialidad')?.invalid">
+              La especialidad es obligatoria
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Tipo de documento</label>
+            <input type="text" class="form-control" formControlName="tipoDocumento">
+            <div class="text-danger mt-1" *ngIf="form.get('tipoDocumento')?.touched && form.get('tipoDocumento')?.invalid">
+              El tipo de documento es obligatorio
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Documento</label>
+            <input type="text" class="form-control" formControlName="documentoIdentificacion">
+            <div class="text-danger mt-1" *ngIf="form.get('documentoIdentificacion')?.touched && form.get('documentoIdentificacion')?.invalid">
+              El documento es obligatorio
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success me-2">
+          Guardar
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="volver()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

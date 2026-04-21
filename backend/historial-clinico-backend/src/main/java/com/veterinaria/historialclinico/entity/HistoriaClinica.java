@@ -22,7 +22,7 @@ public class HistoriaClinica {
     @Column(nullable = false)
     private LocalDate fechaCreacion;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "mascota_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Mascota mascota;

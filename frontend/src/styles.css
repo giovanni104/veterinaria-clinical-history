@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #f8f9fa;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.btn {
+  border-radius: 6px;
+}
+
+textarea {
+  resize: none;
+}

@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4">{{ editMode ? 'Editar detalle clínico' : 'Nuevo detalle clínico' }}</h2>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Temperatura</label>
+            <input type="number" step="0.01" class="form-control" formControlName="temperatura">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Peso</label>
+            <input type="number" step="0.01" class="form-control" formControlName="peso">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Frecuencia cardíaca</label>
+            <input type="number" step="0.01" class="form-control" formControlName="frecuenciaCardiaca">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Frecuencia respiratoria</label>
+            <input type="number" step="0.01" class="form-control" formControlName="frecuenciaRespiratoria">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Fecha y hora</label>
+            <input type="datetime-local" class="form-control" formControlName="fechaHora">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Alimentación</label>
+            <input type="text" class="form-control" formControlName="alimentacion">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Hidratación</label>
+            <input type="text" class="form-control" formControlName="hidratacion">
+          </div>
+
+          <div class="col-md-8 mb-3">
+            <label class="form-label">Observación</label>
+            <textarea class="form-control" rows="3" formControlName="observacion"></textarea>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Historia clínica</label>
+            <select class="form-select" formControlName="historiaClinicaId">
+              <option value="">Seleccione una historia clínica</option>
+              <option *ngFor="let historia of historias" [value]="historia.id">
+                Historia #{{ historia.id }} - {{ historia.mascota?.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Colaborador</label>
+            <select class="form-select" formControlName="colaboradorId">
+              <option value="">Seleccione un colaborador</option>
+              <option *ngFor="let colaborador of colaboradores" [value]="colaborador.id">
+                {{ colaborador.nombre }} {{ colaborador.apellido }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-danger mb-3" *ngIf="form.invalid && form.touched">
+          Verifica los campos obligatorios antes de guardar.
+        </div>
+
+        <button type="submit" class="btn btn-success me-2">
+          Guardar
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="volver()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Colaboradores</h2>
+    <button class="btn btn-primary shadow-sm" (click)="nuevo()">
+      + Nuevo colaborador
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <table class="table table-hover table-bordered align-middle shadow-sm" *ngIf="!loading">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Cargo</th>
+        <th>Especialidad</th>
+        <th>Documento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colaborador of colaboradores">
+        <td>{{ colaborador.id }}</td>
+        <td>{{ colaborador.nombre }}</td>
+        <td>{{ colaborador.apellido }}</td>
+        <td>{{ colaborador.cargo }}</td>
+        <td>{{ colaborador.especialidad }}</td>
+        <td>{{ colaborador.tipoDocumento }} - {{ colaborador.documentoIdentificacion }}</td>
+        <td>
+          <button class="btn btn-outline-warning btn-sm me-2" (click)="editar(colaborador.id)">
+            Editar
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminar(colaborador.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+
+      <tr *ngIf="colaboradores.length === 0">
+        <td colspan="7" class="text-center text-muted">
+          No hay colaboradores registrados
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

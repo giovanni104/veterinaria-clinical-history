@@ -1,0 +1,30 @@
+<div class="container mt-5">
+
+  <div class="d-flex justify-content-between mb-3">
+    <h2>Historias Clínicas</h2>
+    <button class="btn btn-primary" (click)="nuevo()">Nueva</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Mascota</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of historias">
+        <td>{{ h.id }}</td>
+        <td>{{ h.fechaCreacion }}</td>
+        <td>{{ h.mascota?.nombre }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="editar(h.id)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(h.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -44,12 +44,12 @@ public class DetalleHistoriaClinica {
     @Column(nullable = false, length = 500)
     private String observacion;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "historia_clinica_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private HistoriaClinica historiaClinica;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "colaborador_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Colaborador colaborador;

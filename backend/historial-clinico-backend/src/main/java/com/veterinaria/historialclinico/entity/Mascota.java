@@ -29,7 +29,7 @@ public class Mascota {
     @Column(nullable = false)
     private String sexo;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Usuario usuario;

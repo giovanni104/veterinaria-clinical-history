@@ -1,0 +1,56 @@
+<div class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Detalles Clínicos</h2>
+    <button class="btn btn-primary shadow-sm" (click)="nuevo()">
+      + Nuevo detalle clínico
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <table class="table table-hover table-bordered align-middle shadow-sm" *ngIf="!loading">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Fecha y hora</th>
+        <th>Temperatura</th>
+        <th>Peso</th>
+        <th>Frec. Cardíaca</th>
+        <th>Frec. Respiratoria</th>
+        <th>Historia Clínica</th>
+        <th>Colaborador</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalle of detalles">
+        <td>{{ detalle.id }}</td>
+        <td>{{ detalle.fechaHora }}</td>
+        <td>{{ detalle.temperatura }}</td>
+        <td>{{ detalle.peso }}</td>
+        <td>{{ detalle.frecuenciaCardiaca }}</td>
+        <td>{{ detalle.frecuenciaRespiratoria }}</td>
+        <td>{{ detalle.historiaClinica?.id }}</td>
+        <td>{{ detalle.colaborador?.nombre }} {{ detalle.colaborador?.apellido }}</td>
+        <td>
+          <button class="btn btn-outline-warning btn-sm me-2" (click)="editar(detalle.id)">
+            Editar
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminar(detalle.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+
+      <tr *ngIf="detalles.length === 0">
+        <td colspan="9" class="text-center text-muted">
+          No hay detalles clínicos registrados
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
