@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Mascota } from '../models/mascota.model';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
-  private apiUrl = 'http://localhost:8080/api/mascotas';
-
+ 
+  private apiUrl = `${environment.apiBaseUrl}/mascotas`;
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Mascota[]> {
